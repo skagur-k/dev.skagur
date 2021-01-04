@@ -1,4 +1,4 @@
-const config = require("./config.js")
+const siteConfig = require("./config.js")
 
 module.exports = {
   siteMetadata: {
@@ -18,9 +18,10 @@ module.exports = {
     },
     "gatsby-plugin-sharp",
     {
-      resolve: "gatsby-transformer-remark",
+      resolve: "gatsby-plugin-mdx",
       options: {
-        plugins: [
+        extensions: [`.md`, `.mdx`],
+        gatsbyRemarkPlugins: [
           "gatsby-remark-relative-images",
           {
             resolve: "gatsby-remark-images",

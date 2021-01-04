@@ -6,7 +6,7 @@ import blogStyles from "./blog.module.scss"
 const BlogPage = () => {
   const data = useStaticQuery(graphql`
     query {
-      allMarkdownRemark {
+      allMdx {
         edges {
           node {
             frontmatter {
@@ -26,7 +26,7 @@ const BlogPage = () => {
     <Layout>
       <h1>Blog</h1>
       <ol className={blogStyles.posts}>
-        {data.allMarkdownRemark.edges.map(edge => {
+        {data.allMdx.edges.map(edge => {
           return (
             <li className={blogStyles.post} key={edge.node.fields.slug}>
               <Link to={`/blog/${edge.node.fields.slug}`}>
