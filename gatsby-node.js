@@ -1,29 +1,33 @@
 const path = require("path")
 const { createFilePath } = require("gatsby-source-filesystem")
 
-module.exports.onCreateNode = ({ node, actions }) => {
+module.exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === "Mdx") {
-    const slug = path.basename(node.fileAbsolutePath, ".md")
+    const value = createFilePath({ node, getNode })
     createNodeField({
       node,
       name: "slug",
-      value: slug,
+      value,
     })
   }
 }
 
 module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const blogTemplate = path.resolve("./src/templates/blog-post.js")
+  const blogPostTemplate = path.resolve("./src/templates/blog-post.js")
   const res = await graphql(`
     query {
-      allMdx {
+      allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
         edges {
           node {
             fields {
               slug
+            }
+            frontmatter {
+              title
+              date
             }
           }
         }
@@ -37,15 +41,22 @@ module.exports.createPages = async ({ graphql, actions }) => {
 
   const posts = res.data.allMdx.edges
   if (posts.length > 0) {
-    res.data.allMdx.edges.forEach(edge => {
-      const slug = edge.node.fields.slug
+    posts.forEach((post, index) => {
+      //Previous, Next are opposite since it is in DESC order.
+      const previous = index === posts.length - 1 ? null : posts[index + 1].node
+      const next = index === 0 ? null : posts[index - 1].node
+
+      const slug = post.node.fields.slug
       createPage({
-        component: blogTemplate,
-        path: `/blog/${slug}`,
+        component: blogPostTemplate,
+        path: `/blog${slug}`,
         context: {
           slug: slug,
+          previous,
+          next,
         },
       })
     })
   }
+  return null
 }
