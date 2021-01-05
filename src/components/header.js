@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import headerStyles from "./header.module.scss"
-import { useSiteMetadata } from "../hooks/useSiteMetadata"
+import useSiteMetadata from "../hooks/useSiteMetadata"
 
 const Header = () => {
   const { title } = useSiteMetadata()
@@ -27,7 +27,7 @@ const Header = () => {
             <Link
               className={headerStyles.navItem}
               activeClassName={headerStyles.activeNavItem}
-              to="/blog"
+              to="blog"
             >
               Blog
             </Link>
