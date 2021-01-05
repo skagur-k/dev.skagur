@@ -1,9 +1,9 @@
 "use strict"
 
 module.exports = {
+  title: `dev-skagur`,
   description: `A starter blog template for gatsby.`,
   pathPrefix: "/",
-  title: `dev-skagur`,
   postsPerPage: 15,
   author: {
     name: `Namhyuck Kim`,
@@ -15,4 +15,18 @@ module.exports = {
       instagram: `skagurzz`,
     },
   },
+  menuLinks: [
+    {
+      name: "Home",
+      link: "/",
+    },
+    {
+      name: "Blog",
+      link: "/blog",
+    },
+    {
+      name: "About",
+      link: "/about",
+    },
+  ],
 }

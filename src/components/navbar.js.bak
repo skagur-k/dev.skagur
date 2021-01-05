@@ -69,14 +69,3 @@ const Navbar = () => {
 }
 
 export default Navbar
-
-// <NavItem>
-//           <NavLink to="/">Home</NavLink>
-//         </NavItem>
-//         <NavItem>
-//           <NavLink to="/blog">Blog</NavLink>
-//         </NavItem>
-//         <NavItem>
-//           <NavLink to="/about">About</NavLink>
-//         </NavItem>
-//       </NavList>

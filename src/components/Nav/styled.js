@@ -8,7 +8,7 @@ export const NavList = styled.ul`
   margin: 0;
 `
 
-export const NavItem = styled.ul`
+export const NavItem = styled.li`
   font-size: 0.9rem;
   margin-right: 1.3rem;
   margin-left: 0rem;

@@ -5,7 +5,7 @@ module.exports = {
     title: siteConfig.title,
     author: siteConfig.author,
     description: siteConfig.description,
-    social: siteConfig.author.social,
+    menuLinks: siteConfig.menuLinks,
   },
   plugins: [
     "gatsby-plugin-sass",
