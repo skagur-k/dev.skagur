@@ -6,9 +6,12 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 export const query = graphql`
   query($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
+      id
+      excerpt(truncate: true)
+      tableOfContents
       frontmatter {
         title
-        date
+        date(formatString: "YYYY MMMM Do")
       }
       body
     }
@@ -17,12 +20,13 @@ export const query = graphql`
 
 const BlogPost = props => {
   const post = props.data.mdx
+  const { frontmatter, body } = post
   return (
     <Layout>
-      <h1>{props.data.mdx.frontmatter.title}</h1>
-      <p>{props.data.mdx.frontmatter.date}</p>
+      <h1>{frontmatter.title}</h1>
+      <p>{frontmatter.date}</p>
       <div>
-        <MDXRenderer>{post.body}</MDXRenderer>
+        <MDXRenderer>{body}</MDXRenderer>
       </div>
     </Layout>
   )
