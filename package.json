@@ -14,9 +14,12 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "@emotion/react": "^11.1.4",
+    "@emotion/styled": "^11.0.0",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "gatsby": "^2.26.1",
+    "gatsby-plugin-emotion": "^5.1.0",
     "gatsby-plugin-mdx": "^1.7.1",
     "gatsby-plugin-react-helmet": "^3.7.0",
     "gatsby-plugin-sass": "^2.8.0",

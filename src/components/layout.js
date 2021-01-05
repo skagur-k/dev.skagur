@@ -2,17 +2,29 @@ import React from "react"
 import Footer from "../components/footer"
 import Header from "../components/header"
 import "../styles/index.scss"
-import layoutStyles from "./layout.module.scss"
+import styled from "@emotion/styled"
+
+const Container = styled.div`
+  margin: 0 auto;
+  max-width: 850px;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`
+
+const Content = styled.div`
+  flex-grow: 1;
+`
 
 const Layout = props => {
   return (
-    <div className={layoutStyles.container}>
-      <div className={layoutStyles.content}>
-        <Header />
-        {props.children}
-      </div>
+    <Container>
+      <Header />
+      <Content>{props.children}</Content>
       <Footer />
-    </div>
+    </Container>
   )
 }
 

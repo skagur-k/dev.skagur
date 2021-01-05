@@ -9,6 +9,9 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-sass",
+    "gatsby-plugin-sharp",
+    "gatsby-plugin-emotion",
+    "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -16,7 +19,12 @@ module.exports = {
         path: `${__dirname}/content/`,
       },
     },
-    "gatsby-plugin-sharp",
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `./src/utils/typography`,
+      },
+    },
     {
       resolve: "gatsby-plugin-mdx",
       options: {
@@ -49,12 +57,5 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
-    "gatsby-plugin-react-helmet",
   ],
 }
