@@ -8,7 +8,6 @@ module.exports = {
     menuLinks: siteConfig.menuLinks,
   },
   plugins: [
-    "gatsby-plugin-sass",
     "gatsby-plugin-sharp",
     "gatsby-plugin-emotion",
     "gatsby-plugin-react-helmet",
