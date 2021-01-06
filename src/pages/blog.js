@@ -4,6 +4,7 @@ import { Link } from "gatsby"
 import useAllPosts from "../hooks/useAllPosts"
 import styled from "@emotion/styled"
 import kebabCase from "lodash/kebabCase"
+import SEO from "../components/SEO"
 
 const PostsContainer = styled.ol`
   list-style-type: none;
@@ -38,6 +39,7 @@ const BlogPage = () => {
 
   return (
     <Layout>
+      <SEO title="Blog" description="" />
       <h1>Blog</h1>
       <PostsContainer>
         {posts.map(edge => {

@@ -1,10 +1,12 @@
 "use strict"
 
 module.exports = {
-  title: `dev-skagur`,
+  title: `DEV-SKAGUR`,
   description: `Personal website and blog by Nam Hyuck Kim`,
   pathPrefix: "/",
   postsPerPage: 15,
+  titleTemplate: `%s | ${title}`,
+  url: "https://www.doe.com", // No trailing slash allowed!
   author: {
     name: `Namhyuck Kim`,
     summary: ``,

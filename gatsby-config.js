@@ -6,6 +6,8 @@ module.exports = {
     author: siteConfig.author,
     description: siteConfig.description,
     menuLinks: siteConfig.menuLinks,
+    titleTemplate: siteConfig.titleTemplate,
+    url: siteConfig.url, // No trailing slash allowed!
   },
   plugins: [
     "gatsby-plugin-sharp",

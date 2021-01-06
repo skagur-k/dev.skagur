@@ -29,7 +29,7 @@ const TagsPage = ({
 
 TagsPage.propTypes = {
   data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
+    allMdx: PropTypes.shape({
       group: PropTypes.arrayOf(
         PropTypes.shape({
           fieldValue: PropTypes.string.isRequired,
