@@ -21,6 +21,7 @@ const useSiteMetadata = () => {
               name
               link
             }
+            postsPerPage
           }
         }
       }

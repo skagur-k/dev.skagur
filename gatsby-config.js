@@ -8,6 +8,7 @@ module.exports = {
     menuLinks: siteConfig.menuLinks,
     titleTemplate: siteConfig.titleTemplate,
     url: siteConfig.url, // No trailing slash allowed!
+    postsPerPage: siteConfig.postsPerPage,
   },
   plugins: [
     "gatsby-plugin-sharp",
@@ -21,6 +22,20 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `uploads`,
+        path: `${__dirname}/static/assets/img`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `./src/utils/typography`,
@@ -31,7 +46,12 @@ module.exports = {
       options: {
         extensions: [`.md`, `.mdx`],
         gatsbyRemarkPlugins: [
-          "gatsby-remark-relative-images",
+          {
+            resolve: "gatsby-remark-relative-images",
+            options: {
+              name: "uploads",
+            },
+          },
           {
             resolve: "gatsby-remark-images",
             options: {

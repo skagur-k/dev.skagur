@@ -1,7 +1,6 @@
 import React from "react"
 import Layout from "../components/Layout"
-import { Link } from "gatsby"
-import useAllPosts from "../hooks/useAllPosts"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import styled from "@emotion/styled"
 import kebabCase from "lodash/kebabCase"
 import SEO from "../components/SEO"
@@ -34,8 +33,7 @@ const PostWrapper = styled.li`
 `
 
 const BlogPage = () => {
-  const posts = useAllPosts()
-  console.log(posts)
+  const posts = useStaticQuery(postsQuery).allMdx.edges
 
   return (
     <Layout>
@@ -60,3 +58,25 @@ const BlogPage = () => {
 }
 
 export default BlogPage
+
+const postsQuery = graphql`
+  query {
+    allMdx(
+      filter: { frontmatter: { published: { eq: true } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            date
+            tags
+          }
+          fields {
+            slug
+          }
+        }
+      }
+    }
+  }
+`

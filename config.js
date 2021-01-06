@@ -1,34 +1,40 @@
 "use strict"
 
-module.exports = {
-  title: `DEV-SKAGUR`,
-  description: `Personal website and blog by Nam Hyuck Kim`,
-  pathPrefix: "/",
-  postsPerPage: 15,
-  titleTemplate: `%s | ${title}`,
-  url: "https://www.doe.com", // No trailing slash allowed!
-  author: {
-    name: `Namhyuck Kim`,
-    summary: ``,
-    social: {
-      github: `skagur-k`,
-      email: `namhyuck.james@gmail.com`,
-      linkedin: `skagur0329`,
-      instagram: `skagurzz`,
-    },
+const title = "DEV-SKAGUR"
+const description = "Personal website and blog by Nam Hyuck Kim"
+const postsPerPage = 9
+const url = "https://www.doe.com"
+const author = {
+  name: `Namhyuck Kim`,
+  summary: ``,
+  social: {
+    github: `skagur-k`,
+    email: `namhyuck.james@gmail.com`,
+    linkedin: `skagur0329`,
+    instagram: `skagurzz`,
   },
-  menuLinks: [
-    {
-      name: "Home",
-      link: "/",
-    },
-    {
-      name: "Blog",
-      link: "/blog",
-    },
-    {
-      name: "About",
-      link: "/about",
-    },
-  ],
+}
+const menuLinks = [
+  {
+    name: "Home",
+    link: "/",
+  },
+  {
+    name: "Blog",
+    link: "/blog",
+  },
+  {
+    name: "About",
+    link: "/about",
+  },
+]
+
+module.exports = {
+  title: title,
+  description: description,
+  postsPerPage: postsPerPage,
+  titleTemplate: `%s | ${title}`,
+  url: url, // No trailing slash allowed!
+  author: author,
+  menuLinks: menuLinks,
 }

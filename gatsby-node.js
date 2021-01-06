@@ -19,10 +19,12 @@ module.exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
   const blogPostTemplate = path.resolve("./src/templates/blogPost.js")
   const tagTemplate = path.resolve("./src/templates/tags.js")
-
   const result = await graphql(`
     query {
-      postsMdx: allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+      postsMdx: allMdx(
+        filter: { frontmatter: { published: { eq: true } } }
+        sort: { fields: [frontmatter___date], order: DESC }
+      ) {
         edges {
           node {
             fields {
@@ -41,6 +43,11 @@ module.exports.createPages = async ({ graphql, actions, reporter }) => {
           fieldValue
         }
       }
+      siteMetadata: site {
+        siteMetadata {
+          postsPerPage
+        }
+      }
     }
   `)
 
@@ -50,7 +57,6 @@ module.exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   const posts = result.data.postsMdx.edges
-  const tags = result.data.tagsGroup.group
 
   if (posts.length > 0) {
     posts.forEach((post, index) => {
@@ -71,6 +77,22 @@ module.exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   }
 
+  const postsPerPage = result.data.siteMetadata.siteMetadata.postsPerPage
+  const numPages = Math.ceil(posts.length / postsPerPage)
+  Array.from({ length: numPages }).forEach((_, index) => {
+    createPage({
+      path: index === 0 ? "/" : `page/${index + 1}`,
+      component: path.resolve("./src/templates/blogList.js"),
+      context: {
+        limit: postsPerPage,
+        skip: index * postsPerPage,
+        numPages,
+        currentPage: index + 1,
+      },
+    })
+  })
+
+  const tags = result.data.tagsGroup.group
   tags.forEach(tag => {
     createPage({
       path: `blog/tags/${_.kebabCase(tag.fieldValue)}/`,
