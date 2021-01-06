@@ -47,6 +47,16 @@ module.exports = {
         extensions: [`.md`, `.mdx`],
         gatsbyRemarkPlugins: [
           {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: "language-",
+              inlineCodeMarker: null,
+              aliases: {},
+              showLineNumbers: false,
+              noInlineHighlight: false,
+            },
+          },
+          {
             resolve: "gatsby-remark-relative-images",
             options: {
               name: "uploads",
@@ -74,7 +84,6 @@ module.exports = {
               elements: [`h2`, "h3", `h4`], // 링크를 추가할 Header 종류 선택
             },
           },
-          `gatsby-remark-prismjs`,
         ],
       },
     },
