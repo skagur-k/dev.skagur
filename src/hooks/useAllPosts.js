@@ -10,6 +10,7 @@ const useAllPosts = () => {
               frontmatter {
                 title
                 date
+                tags
               }
               fields {
                 slug

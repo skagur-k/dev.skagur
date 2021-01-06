@@ -1,5 +1,6 @@
 const path = require("path")
 const { createFilePath } = require("gatsby-source-filesystem")
+const _ = require("lodash")
 
 module.exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
@@ -14,12 +15,14 @@ module.exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 }
 
-module.exports.createPages = async ({ graphql, actions }) => {
+module.exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
-  const blogPostTemplate = path.resolve("./src/templates/blog-post.js")
-  const res = await graphql(`
+  const blogPostTemplate = path.resolve("./src/templates/blogPost.js")
+  const tagTemplate = path.resolve("./src/templates/tags.js")
+
+  const result = await graphql(`
     query {
-      allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+      postsMdx: allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
         edges {
           node {
             fields {
@@ -28,18 +31,27 @@ module.exports.createPages = async ({ graphql, actions }) => {
             frontmatter {
               title
               date
+              tags
             }
           }
+        }
+      }
+      tagsGroup: allMdx {
+        group(field: frontmatter___tags) {
+          fieldValue
         }
       }
     }
   `)
 
-  if (res.errors) {
-    throw res.error
+  if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query`)
+    return
   }
 
-  const posts = res.data.allMdx.edges
+  const posts = result.data.postsMdx.edges
+  const tags = result.data.tagsGroup.group
+
   if (posts.length > 0) {
     posts.forEach((post, index) => {
       //Previous, Next are opposite since it is in DESC order.
@@ -49,7 +61,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
       const slug = post.node.fields.slug
       createPage({
         component: blogPostTemplate,
-        path: `/blog${slug}`,
+        path: `/blog/${_.kebabCase(slug)}`,
         context: {
           slug: slug,
           previous,
@@ -58,5 +70,14 @@ module.exports.createPages = async ({ graphql, actions }) => {
       })
     })
   }
-  return null
+
+  tags.forEach(tag => {
+    createPage({
+      path: `blog/tags/${_.kebabCase(tag.fieldValue)}/`,
+      component: tagTemplate,
+      context: {
+        tag: tag.fieldValue,
+      },
+    })
+  })
 }

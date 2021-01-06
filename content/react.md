@@ -1,6 +1,7 @@
 ---
 title: "React Bootcamp"
 date: "2020-01-01"
+tags: ['test','react']
 ---
 
 Hello React!

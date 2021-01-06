@@ -1,6 +1,7 @@
 ---
 title: "The Great Gatsby Bootcamp"
 date: "2020-01-04"
+tags: ['test','react']
 ---
 
 Hello World!

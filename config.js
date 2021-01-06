@@ -2,7 +2,7 @@
 
 module.exports = {
   title: `dev-skagur`,
-  description: `A starter blog template for gatsby.`,
+  description: `Personal website and blog by Nam Hyuck Kim`,
   pathPrefix: "/",
   postsPerPage: 15,
   author: {

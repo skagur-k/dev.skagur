@@ -1,8 +1,9 @@
 import React from "react"
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import { Link } from "gatsby"
 import useAllPosts from "../hooks/useAllPosts"
 import styled from "@emotion/styled"
+import kebabCase from "lodash/kebabCase"
 
 const PostsContainer = styled.ol`
   list-style-type: none;
@@ -44,7 +45,7 @@ const BlogPage = () => {
           const frontmatter = post.frontmatter
           return (
             <PostWrapper key={post.fields.slug}>
-              <Link to={`/blog${post.fields.slug}`}>
+              <Link to={`/blog/${kebabCase(post.fields.slug)}`}>
                 <h2>{frontmatter.title}</h2>
                 <p>{frontmatter.date}</p>
               </Link>
@@ -57,10 +58,3 @@ const BlogPage = () => {
 }
 
 export default BlogPage
-
-// <li className={blogStyles.post} key={post.fields.slug}>
-//               <Link to={`/blog${post.fields.slug}`}>
-//                 <h2>{frontmatter.title}</h2>
-//                 <p>{frontmatter.date}</p>
-//               </Link>
-//             </li>
