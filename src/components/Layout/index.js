@@ -7,7 +7,9 @@ const Layout = props => {
   return (
     <Styled.LayoutContainer>
       <Header />
-      <Styled.LayoutContent>{props.children}</Styled.LayoutContent>
+      <Styled.LayoutContentWrapper>
+        {props.children}
+      </Styled.LayoutContentWrapper>
       <Footer />
     </Styled.LayoutContainer>
   )

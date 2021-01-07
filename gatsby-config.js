@@ -51,7 +51,13 @@ module.exports = {
             options: {
               classPrefix: "language-",
               inlineCodeMarker: null,
-              aliases: {},
+              aliases: {
+                sh: "shell",
+                js: "javascript",
+                env: "bash",
+                mdx: "md",
+                ".json": "json",
+              },
               showLineNumbers: false,
               noInlineHighlight: false,
             },
@@ -66,6 +72,7 @@ module.exports = {
             resolve: "gatsby-remark-images",
             options: {
               maxWidth: 750,
+
               linkImagesToOriginal: false,
             },
           },

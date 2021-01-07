@@ -39,7 +39,8 @@
     "react-typography": "^0.16.19",
     "typescript": "^4.1.3",
     "typography": "^0.16.19",
-    "typography-theme-fairy-gates": "^0.16.19"
+    "typography-theme-fairy-gates": "^0.16.19",
+    "typography-theme-kirkham": "^0.16.19"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",

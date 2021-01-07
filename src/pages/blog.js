@@ -10,7 +10,7 @@ const PostsContainer = styled.ol`
   margin: 0;
 `
 const PostWrapper = styled.li`
-  margin: 1rem 0;
+  margin: 0rem 0 1rem;
   & > a {
     background: #f4f4f4;
     color: #000000;
