@@ -1,82 +1,13 @@
 import React from "react"
-import Layout from "../components/Layout"
-import { Link, useStaticQuery, graphql } from "gatsby"
-import styled from "@emotion/styled"
-import kebabCase from "lodash/kebabCase"
 import SEO from "../components/SEO"
 
-const PostsContainer = styled.ol`
-  list-style-type: none;
-  margin: 0;
-`
-const PostWrapper = styled.li`
-  margin: 0rem 0 1rem;
-  & > a {
-    background: #f4f4f4;
-    color: #000000;
-    display: block;
-    padding: 1rem;
-    text-decoration: none;
-    &:hover {
-      background: #e4e4e4;
-    }
-  }
-  & > a h2 {
-    margin-bottom: 0;
-  }
-
-  & > p {
-    color: #777777;
-    font-size: 0.8rem;
-    font-style: italic;
-  }
-`
-
 const BlogPage = () => {
-  const posts = useStaticQuery(postsQuery).allMdx.edges
-
   return (
-    <Layout>
+    <>
       <SEO title="Blog" description="" />
-      <h1>Blog</h1>
-      <PostsContainer>
-        {posts.map(edge => {
-          const post = edge.node
-          const frontmatter = post.frontmatter
-          return (
-            <PostWrapper key={post.fields.slug}>
-              <Link to={`/blog/${kebabCase(post.fields.slug)}`}>
-                <h2>{frontmatter.title}</h2>
-                <p>{frontmatter.date}</p>
-              </Link>
-            </PostWrapper>
-          )
-        })}
-      </PostsContainer>
-    </Layout>
+      <p>TODO</p>
+    </>
   )
 }
 
 export default BlogPage
-
-const postsQuery = graphql`
-  query {
-    allMdx(
-      filter: { frontmatter: { published: { eq: true } } }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      edges {
-        node {
-          frontmatter {
-            title
-            date
-            tags
-          }
-          fields {
-            slug
-          }
-        }
-      }
-    }
-  }
-`

@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import kebabCase from "lodash/kebabCase"
 import { Link, graphql } from "gatsby"
 
@@ -27,23 +26,6 @@ const TagsPage = ({
   </div>
 )
 
-TagsPage.propTypes = {
-  data: PropTypes.shape({
-    allMdx: PropTypes.shape({
-      group: PropTypes.arrayOf(
-        PropTypes.shape({
-          fieldValue: PropTypes.string.isRequired,
-          totalCount: PropTypes.number.isRequired,
-        }).isRequired
-      ),
-    }),
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-      }),
-    }),
-  }),
-}
 export default TagsPage
 
 export const pageQuery = graphql`

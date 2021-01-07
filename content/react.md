@@ -5,7 +5,7 @@ tags: ['test','react']
 published: true
 ---
 
-Hello React! `This is inline code`{:js}
+Hello React! `js>let a = function()`
 
 ![Screenshot](./image.jpg)
 ⚠️🚌📺
