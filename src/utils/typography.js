@@ -8,16 +8,16 @@ const typography = new Typography(
     baseLineHeight: 1.618,
     googleFonts: [
       {
-        name: "Noto Serif KR",
+        name: "Noto Serif",
         styles: ["400", "700"],
       },
       {
-        name: "Noto Sans KR",
+        name: "Noto Sans",
         styles: ["400", "700"],
       },
     ],
-    headerFontFamily: ["Noto Sans KR", "sans-serif"],
-    bodyFontFamily: ["Noto Sans KR", "serif"],
+    headerFontFamily: ["Noto Serif", "serif"],
+    bodyFontFamily: ["Noto Serif", "serif"],
     headerWeight: 700,
     bodyWeight: 400,
     boldWeight: 700,

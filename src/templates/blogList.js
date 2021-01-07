@@ -1,75 +1,46 @@
 import React from "react"
+import { graphql } from "gatsby"
 import Layout from "../components/Layout"
-import { Link, useStaticQuery, graphql } from "gatsby"
-import styled from "@emotion/styled"
-import kebabCase from "lodash/kebabCase"
 import SEO from "../components/SEO"
+import PostList from "../components/PostList"
+import Pagination from "../components/Pagination"
 
-const PostsContainer = styled.ol`
-  list-style-type: none;
-  margin: 0;
-`
-const PostWrapper = styled.li`
-  margin: 0rem 0 1rem;
-  & > a {
-    background: #f4f4f4;
-    color: #000000;
-    display: block;
-    padding: 1rem;
-    text-decoration: none;
-    &:hover {
-      background: #e4e4e4;
-    }
-  }
-  & > a h2 {
-    margin-bottom: 0;
-  }
-
-  & > p {
-    color: #777777;
-    font-size: 0.8rem;
-    font-style: italic;
-  }
-`
-
-const BlogList = () => {
-  const posts = useStaticQuery(postsQuery).allMdx.edges
+const BlogList = ({ data, pageContext }) => {
+  const posts = data.allMdx.edges
+  const { currentPage, numPages } = pageContext
+  const isFirst = currentPage === 1
+  const isLast = currentPage === numPages
+  const prevPage = currentPage - 1 === 1 ? "/" : `/page/${currentPage - 1}`
+  const nextPage = `/page/${currentPage + 1}`
 
   return (
     <Layout>
-      <SEO />
-      <h1>Blog</h1>
-      <PostsContainer>
-        {posts.map(edge => {
-          const post = edge.node
-          const frontmatter = post.frontmatter
-          return (
-            <PostWrapper key={post.fields.slug}>
-              <Link to={`/blog/${kebabCase(post.fields.slug)}`}>
-                <h2>{frontmatter.title}</h2>
-                <p>{frontmatter.date}</p>
-              </Link>
-            </PostWrapper>
-          )
-        })}
-      </PostsContainer>
+      <SEO title="Home" />
+      <PostList posts={posts} />
+      <Pagination
+        isFirst={isFirst}
+        isLast={isLast}
+        currentPage={currentPage}
+        numPages={numPages}
+        prevPage={prevPage}
+        nextPage={nextPage}
+      />
     </Layout>
   )
 }
 
-export default BlogList
-
-const postsQuery = graphql`
-  query {
+export const PostsQuery = graphql`
+  query PostList($skip: Int!, $limit: Int!) {
     allMdx(
-      filter: { frontmatter: { published: { eq: true } } }
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { fields: frontmatter___date, order: DESC }
+      skip: $skip
+      limit: $limit
     ) {
       edges {
         node {
           frontmatter {
             title
-            date
+            date(formatString: "MMMM DD, YYYY")
             tags
           }
           fields {
@@ -80,3 +51,4 @@ const postsQuery = graphql`
     }
   }
 `
+export default BlogList

@@ -18,7 +18,9 @@ module.exports.onCreateNode = ({ node, getNode, actions }) => {
 module.exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
   const blogPostTemplate = path.resolve("./src/templates/blogPost.js")
+  const blogListTemplate = path.resolve("./src/templates/blogList.js")
   const tagTemplate = path.resolve("./src/templates/tags.js")
+
   const result = await graphql(`
     query {
       postsMdx: allMdx(
@@ -79,10 +81,11 @@ module.exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const postsPerPage = result.data.siteMetadata.siteMetadata.postsPerPage
   const numPages = Math.ceil(posts.length / postsPerPage)
+
   Array.from({ length: numPages }).forEach((_, index) => {
     createPage({
       path: index === 0 ? "/" : `page/${index + 1}`,
-      component: path.resolve("./src/templates/blogList.js"),
+      component: blogListTemplate,
       context: {
         limit: postsPerPage,
         skip: index * postsPerPage,

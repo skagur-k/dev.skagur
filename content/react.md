@@ -5,7 +5,7 @@ tags: ['test','react']
 published: true
 ---
 
-Hello React! `This is inline code`
+Hello React! `This is inline code`{:js}
 
 ![Screenshot](./image.jpg)
 ⚠️🚌📺
@@ -14,6 +14,6 @@ Hello React! `This is inline code`
 2. GraphQL
 3. React
 
-```javascript
+```js
 const a = b;
 ```

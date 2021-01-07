@@ -12,7 +12,7 @@ export const LayoutContainer = styled.div`
 
 export const LayoutContentWrapper = styled.div`
   padding: 0rem 0rem 0rem 0rem;
-  margin: 2rem 4rem 1rem;
+  margin: 2rem 2rem 1rem;
   /* display: none; */
 
   flex-grow: 1;
