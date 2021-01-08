@@ -1,6 +1,6 @@
 import React from "react"
 import kebabCase from "lodash/kebabCase"
-import styled from "@emotion/styled"
+import styled from "styled-components"
 import { Link } from "gatsby"
 
 const PostWrapper = styled.li`

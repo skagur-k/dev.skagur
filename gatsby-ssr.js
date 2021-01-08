@@ -1,13 +1,14 @@
-import React from "react"
-import "prismjs/themes/prism-tomorrow.css"
-import "prismjs/plugins/line-numbers/prism-line-numbers.css"
+const React = require("react")
+require("prismjs/themes/prism-tomorrow.css")
+require("prismjs/plugins/line-numbers/prism-line-numbers.css")
 
-export const onRenderBody = ({ setPreBodyComponents }) => {
+exports.onRenderBody = ({ setPreBodyComponents }) => {
   setPreBodyComponents([
     React.createElement("script", {
+      key: `theme`,
       dangerouslySetInnerHTML: {
         __html: `
-          ((){
+          (() => {
             window.__onThemeChange = function() {};
 
             // Function that sets new theme passed down from setPreferredTheme(newTheme)
@@ -37,8 +38,8 @@ export const onRenderBody = ({ setPreBodyComponents }) => {
             }
 
             // Queries user's preferred theme
-            let prefers-color-scheme = window.matchMedia('(prefers-color-scheme: dark)')
-            prefers-color-scheme.addListener(e => {
+            let query = window.matchMedia('(prefers-color-scheme: dark)')
+            query.addListener(e => {
               window.__setPreferredTheme(e.matches ? 'light' : 'dark')
             })
 
@@ -49,4 +50,12 @@ export const onRenderBody = ({ setPreBodyComponents }) => {
       },
     }),
   ])
+
+  // setBodyAttributes([
+  //   React.createElement("div", {
+  //     key: `body`,
+  //     id: "___gatsby",
+  //     dangerouslySetInnerHTML: { __html: props.body },
+  //   }),
+  // ])
 }

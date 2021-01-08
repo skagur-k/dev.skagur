@@ -1,6 +1,7 @@
 import React from "react"
 import kebabCase from "lodash/kebabCase"
 import { Link, graphql } from "gatsby"
+import Layout from "../components/Layout"
 
 const TagsPage = ({
   data: {
@@ -10,20 +11,18 @@ const TagsPage = ({
     },
   },
 }) => (
-  <div>
-    <div>
-      <h1>Tags</h1>
-      <ul>
-        {group.map(tag => (
-          <li key={tag.fieldValue}>
-            <Link to={`/blog/tags/${kebabCase(tag.fieldValue)}/`}>
-              {tag.fieldValue} ({tag.totalCount})
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </div>
+  <Layout>
+    <h1>Tags</h1>
+    <ul>
+      {group.map(tag => (
+        <li key={tag.fieldValue}>
+          <Link to={`/blog/tags/${kebabCase(tag.fieldValue)}/`}>
+            {tag.fieldValue} ({tag.totalCount})
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </Layout>
 )
 
 export default TagsPage
