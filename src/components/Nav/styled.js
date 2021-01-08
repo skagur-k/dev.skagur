@@ -1,6 +1,8 @@
 import styled from "styled-components"
 
-export const NavWrapper = styled.nav``
+export const NavWrapper = styled.nav`
+  z-index: 1000;
+`
 
 export const NavList = styled.ul`
   display: flex;
@@ -16,16 +18,16 @@ export const NavItem = styled.li`
   display: flex;
   align-items: center;
 
-  & > a {
+  a {
     color: #999999;
     text-decoration: none;
 
-    &.active {
+    .active {
       color: cadetblue;
       text-decoration: underline;
     }
 
-    &:hover {
+    :hover {
       color: #666666;
     }
   }
