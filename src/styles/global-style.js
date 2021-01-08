@@ -18,14 +18,26 @@ export const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
     scroll-behavior: smooth;
-    font-family: Noto Serif, Garamond, Georgia, Cambria, Cochin, Times,
-      "Times New Roman", serif;
     font-size: 16px;
     color: '#1a202c';
   }
+
+  body.light {
+    --background: #F6F6F6;
+    --text: #222222;
+    --divider: #E1E1E1;
+  }
+
+  body.dark {
+    --background: #282C35;
+    --text: #F6F6F6;
+    --divider: #54575e;
+  }
+
   body {
-    line-height: 1.5;
-      letter-spacing: 0;
-    background-color: '#f7fafc';
+    --accent: #01AEEF;
+    background-color: var(--background);
+    color: var(--text);
+    transition: background-color 0.4s, color 0.4s;
   }
 `

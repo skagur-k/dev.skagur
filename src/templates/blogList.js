@@ -1,9 +1,9 @@
 import React from "react"
 import { graphql } from "gatsby"
-// import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import PostList from "../components/PostList"
 import Pagination from "../components/Pagination"
+import Layout from "../components/Layout"
 
 const BlogList = ({ data, pageContext }) => {
   const posts = data.allMdx.edges
@@ -14,7 +14,7 @@ const BlogList = ({ data, pageContext }) => {
   const nextPage = `/page/${currentPage + 1}`
 
   return (
-    <>
+    <Layout>
       <SEO title="Home" />
       <PostList posts={posts} />
       <Pagination
@@ -25,7 +25,7 @@ const BlogList = ({ data, pageContext }) => {
         prevPage={prevPage}
         nextPage={nextPage}
       />
-    </>
+    </Layout>
   )
 }
 

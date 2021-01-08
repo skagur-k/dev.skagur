@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
 export const LayoutContainer = styled.div`
+  max-width: ${({ theme }) => theme.media.large};
   margin: 0 auto;
-  max-width: 1270px;
   padding: 1rem;
 
   display: flex;
@@ -11,15 +11,7 @@ export const LayoutContainer = styled.div`
 `
 
 export const LayoutContentWrapper = styled.div`
-  padding: 0rem 0rem 0rem 0rem;
-  margin: 2rem 2rem 1rem;
-  /* display: none; */
-
+  padding: 1rem 0rem 0rem;
+  margin: 0rem 0rem 0rem;
   flex-grow: 1;
-  & > h1 {
-    font-size: 1.5rem;
-  }
-  & > p {
-    font-size: 0.9rem;
-  }
 `
