@@ -7,10 +7,10 @@ const menuLinks = [
     name: "Blog",
     link: "/blog",
   },
-  {
-    name: "Study Log",
-    link: "/studylog",
-  },
+  // {
+  //   name: "Study Log",
+  //   link: "/studylog",
+  // },
   {
     name: "About",
     link: "/about",
@@ -18,8 +18,8 @@ const menuLinks = [
 ]
 
 const siteConfig = {
-  title: "log. by nhk",
-  titleShort: "log-nhk",
+  title: "dev.log by nh kim",
+  titleShort: "dev.log",
   lang: "en",
   description: "Personal website and blog by namhyuck kim",
   pathPrefix: "/",

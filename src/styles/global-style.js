@@ -18,7 +18,7 @@ export const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
     scroll-behavior: smooth;
-    font-size: 16px;
+    font-size: 18px;
     color: '#1a202c';
   }
 
