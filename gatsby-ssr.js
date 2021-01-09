@@ -50,12 +50,4 @@ exports.onRenderBody = ({ setPreBodyComponents }) => {
       },
     }),
   ])
-
-  // setBodyAttributes([
-  //   React.createElement("div", {
-  //     key: `body`,
-  //     id: "___gatsby",
-  //     dangerouslySetInnerHTML: { __html: props.body },
-  //   }),
-  // ])
 }

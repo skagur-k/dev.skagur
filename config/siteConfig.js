@@ -7,19 +7,35 @@ const menuLinks = [
     name: "Blog",
     link: "/blog",
   },
-  // {
-  //   name: "Study Log",
-  //   link: "/studylog",
-  // },
   {
     name: "About",
     link: "/about",
   },
 ]
 
-const siteConfig = {
+const social = [
+  {
+    name: "github",
+    username: "skagur-k",
+  },
+  {
+    name: "email",
+    username: "namhyuck.james@gmail.com",
+  },
+  {
+    name: "instagram",
+    username: "skagurzz",
+  },
+  {
+    name: "linkedin",
+    username: "skagur0329",
+  },
+]
+
+module.exports = {
   title: "dev.log by nh kim",
   titleShort: "dev.log",
+  titleTemplate: `%s | dev.log by nhkim`,
   lang: "en",
   description: "Personal website and blog by namhyuck kim",
   pathPrefix: "/",
@@ -29,18 +45,10 @@ const siteConfig = {
   // Author
   author: `namhyuck kim`,
   minibio: ``,
-
-  // Social
-  github: `skagur-k`,
-  email: `namhyuck.james@gmail.com`,
-  linkedin: `skagur0329`,
-  instagram: `skagurzz`,
-
   // Manifest and Progress color
   themeColor: "",
   backgroundColor: "",
 
+  social,
   menuLinks,
 }
-
-export default siteConfig

@@ -2,12 +2,13 @@ import styled from "styled-components"
 
 export const NavWrapper = styled.nav`
   z-index: 1000;
+  margin-left: auto;
+  position: sticky;
 `
 
 export const NavList = styled.ul`
   display: flex;
   list-style-type: none;
-  margin: 0 0 0;
 `
 
 export const NavItem = styled.li`

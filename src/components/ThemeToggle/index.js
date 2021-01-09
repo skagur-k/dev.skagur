@@ -15,7 +15,12 @@ const ThemeToggle = () => {
     window.__setPreferredTheme(isLightMode ? "dark" : "light")
   }
 
-  return <button onClick={toggle}>Change Theme</button>
+  return (
+    <button onClick={toggle}>
+      <span role="img" aria-label="bulb">
+        💡
+      </span>
+    </button>
+  )
 }
-
 export default ThemeToggle

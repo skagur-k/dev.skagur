@@ -3,14 +3,14 @@ import { Link } from "gatsby"
 
 export const TOC = styled.ul`
   position: fixed;
-  left: calc(50% + 400px);
-  top: 110px;
+  left: calc(50% + 500px);
+  top: 210px;
   max-height: 70vh;
   width: 310px;
   display: flex;
 
   li {
-    line-height: 1.5;
+    line-height: 1.25;
     margin-top: 0;
   }
 `

@@ -12,9 +12,7 @@ const Layout = props => {
       <GlobalStyle />
       <Styled.LayoutContainer>
         <Header />
-        <Styled.LayoutContentWrapper>
-          {props.children}
-        </Styled.LayoutContentWrapper>
+        <Styled.LayoutContentWrapper>{props.children}</Styled.LayoutContentWrapper>
         <Footer />
       </Styled.LayoutContainer>
     </ThemeProvider>

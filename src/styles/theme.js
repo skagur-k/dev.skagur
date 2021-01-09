@@ -1,5 +1,5 @@
 import { darken, lighten } from "polished"
-import { fonts } from "../utils/typography"
+// import { fonts } from "../utils/typography"
 
 const calcRem = size => `${size / 16}rem`
 
@@ -63,7 +63,7 @@ export const media = {
 }
 
 const theme = {
-  fonts,
+  // fonts,
   fontSize,
   fontWeight,
   media,

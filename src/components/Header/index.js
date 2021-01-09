@@ -9,10 +9,10 @@ const Header = () => {
   const { title } = useSiteMetadata()
   return (
     <Styled.HeaderContainer>
+      <Navbar />
       <Styled.HeaderTitle>
         <Link to="/">{title}</Link>
       </Styled.HeaderTitle>
-      <Navbar />
     </Styled.HeaderContainer>
   )
 }

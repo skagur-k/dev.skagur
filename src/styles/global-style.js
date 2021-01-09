@@ -23,14 +23,14 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body.light {
-    --background: #F6F6F6;
+    --background: #F4F4F4;
     --text: #222222;
     --divider: #E1E1E1;
   }
 
   body.dark {
     --background: #282C35;
-    --text: #F6F6F6;
+    --text: #F4F64F4;
     --divider: #54575e;
   }
 
@@ -38,6 +38,7 @@ export const GlobalStyle = createGlobalStyle`
     --accent: #01AEEF;
     background-color: var(--background);
     color: var(--text);
-    transition: background-color 0.4s, color 0.4s;
+    -webkit-backface-visibility: hidden;
+    transition: background-color 0.1s, color 0.1s;
   }
 `

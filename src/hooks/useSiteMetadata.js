@@ -8,14 +8,10 @@ const useSiteMetadata = () => {
           siteMetadata {
             title
             description
-            author {
+            author
+            social {
               name
-              social {
-                instagram
-                email
-                linkedin
-                github
-              }
+              username
             }
             menuLinks {
               name

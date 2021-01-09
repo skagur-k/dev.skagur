@@ -11,8 +11,10 @@ export const LayoutContainer = styled.div`
 `
 
 export const LayoutContentWrapper = styled.div`
-  max-width: 800px;
-  padding: 1rem 0rem 0rem;
-  margin: 0rem 0rem 0rem;
+  max-width: 900px;
+  width: 100%;
+  padding: 0 2rem 0;
+  margin: 0 auto;
+
   flex-grow: 1;
 `

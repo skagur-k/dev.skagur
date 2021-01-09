@@ -28,7 +28,7 @@ const BlogPost = props => {
       <SEO title={frontmatter.title} />
       <h1>{frontmatter.title}</h1>
       <p>{frontmatter.date}</p>
-      <TOC tableOfContents={tableOfContents} />
+      {/* <TOC tableOfContents={tableOfContents} /> */}
       <div>
         <MDXRenderer>{body}</MDXRenderer>
       </div>

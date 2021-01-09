@@ -35,8 +35,8 @@ const PostList = ({ posts, columns }) => {
 
 const columnsCount = ({ width }) => {
   let columns = 3
-  if (width <= parseInt()) columns = 2
-  if (width <= parseInt()) columns = 1
+  // if (width <= parseInt()) columns = 2
+  // if (width <= parseInt()) columns = 1
 
   return columns
 }
