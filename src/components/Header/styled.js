@@ -5,9 +5,8 @@ export const HeaderContainer = styled.div`
   flex-direction: column;
   align-content: space-between;
 
-  padding: 1rem 1rem 0;
+  padding: 1rem 1rem 1rem;
   height: 200px;
-  /* background-color: white; */
   top: 0;
 `
 

@@ -13,8 +13,8 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-sharp",
-    "gatsby-plugin-styled-components",
     "gatsby-plugin-react-helmet",
+    "gatsby-plugin-styled-components",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -36,6 +36,8 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {
@@ -94,30 +96,5 @@ module.exports = {
         ],
       },
     },
-    // {
-    //   resolve: "gatsby-plugin-manifest",
-    //   options: {
-    //     name: siteConfig.title,
-    //     short_name: siteConfig.titleShort,
-    //     description: siteConfig.description,
-    //     start_url: siteConfig.pathPrefix,
-    //     lang: siteConfig.lang,
-    //     background_color: siteConfig.backgroundColor,
-    //     theme_color: siteConfig.themeColor,
-    //     display: "standalone",
-    //     // icons: [
-    //     //   {
-    //     //     src: "/favicons/android-chrome-192x192.png",
-    //     //     sizes: "192x192",
-    //     //     type: "image/png",
-    //     //   },
-    //     //   {
-    //     //     src: "/favicons/android-chrome-512x512.png",
-    //     //     sizes: "512x512",
-    //     //     type: "image/png",
-    //     //   },
-    //     // ],
-    //   },
-    // },
   ],
 }

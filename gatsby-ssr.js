@@ -10,7 +10,6 @@ exports.onRenderBody = ({ setPreBodyComponents }) => {
         __html: `
           (() => {
             window.__onThemeChange = function() {};
-
             // Function that sets new theme passed down from setPreferredTheme(newTheme)
             function setTheme(newTheme){
               window.__theme = newTheme;
@@ -47,6 +46,8 @@ exports.onRenderBody = ({ setPreBodyComponents }) => {
             setTheme(preferredTheme || (prefers-color-scheme.matches ? 'light' : 'dark'))
           })()
         `,
+        // .replace(/\n/g, " ")
+        // .replace(/ {2}/g, ""),
       },
     }),
   ])

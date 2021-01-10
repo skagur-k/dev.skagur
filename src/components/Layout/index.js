@@ -3,19 +3,19 @@ import Footer from "../Footer/"
 import Header from "../Header/"
 import * as Styled from "./styled"
 import theme from "../../styles/theme"
-import { GlobalStyle } from "../../styles/global-style"
+import GlobalStyles from "../../styles/global-styles"
 import { ThemeProvider } from "styled-components"
 
 const Layout = props => {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Styled.LayoutContainer>
+    <Styled.LayoutContainer>
+      <GlobalStyles />
+      <ThemeProvider theme={theme}>
         <Header />
         <Styled.LayoutContentWrapper>{props.children}</Styled.LayoutContentWrapper>
         <Footer />
-      </Styled.LayoutContainer>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Styled.LayoutContainer>
   )
 }
 
