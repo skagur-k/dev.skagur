@@ -1,8 +1,18 @@
-const React = require("react")
-require("prismjs/themes/prism-tomorrow.css")
-require("prismjs/plugins/line-numbers/prism-line-numbers.css")
+import React from "react"
+import GlobalStyles from "./src/styles/global-styles"
+import("prismjs/themes/prism-tomorrow.css")
+import("prismjs/plugins/line-numbers/prism-line-numbers.css")
 
-exports.onRenderBody = ({ setPreBodyComponents }) => {
+export const wrapPageElement = ({ element }) => {
+  return (
+    <>
+      <GlobalStyles />
+      {element}
+    </>
+  )
+}
+
+export const onRenderBody = ({ setPreBodyComponents }) => {
   setPreBodyComponents([
     React.createElement("script", {
       key: `theme`,

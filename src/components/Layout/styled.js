@@ -4,8 +4,8 @@ import theme from "../../styles/theme"
 export const LayoutWrapper = styled.div``
 
 export const LayoutContainer = styled.div`
-  background: var(--body);
-  transition: background 0.1s linear;
+  /* background: var(--body);
+  transition: background 0.1s linear; */
   margin: 0 auto;
   padding: 0rem;
   display: flex;

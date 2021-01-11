@@ -11,3 +11,7 @@ Hello World!
 1. Gatsby
 2. GraphQL
 3. React
+
+```js
+var hello = 2;
+```
