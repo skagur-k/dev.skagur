@@ -48,8 +48,8 @@ const promptCategories = async choices => {
     name: "category",
     message: "Select category",
     choices: [
-      { name: `${chalk.magenta(`Create new category`)}`, value: -1 },
       ...choices,
+      { name: `${chalk.magenta(`Create new category`)}`, value: -1 },
       { name: `${chalk.red(`No category`)}`, value: null },
     ],
   })
@@ -61,12 +61,12 @@ const promptCategories = async choices => {
       validate: async val => {
         if (!val) {
           return res("You must provide Category name.")
-          return true
         }
+        return true
       },
     })
   }
-  return result.category.toString() || ""
+  return result.category || ""
 }
 
 const promptPublished = async () => {
@@ -75,8 +75,8 @@ const promptPublished = async () => {
     name: "publish",
     message: "Publish this post?",
     choices: [
-      { name: "Publish", value: true.toString() },
-      { name: "Do not Publish", value: false.toString() },
+      { name: "Publish", value: 1 },
+      { name: "Do not Publish", value: 0 },
     ],
   })
   return result.publish
@@ -123,11 +123,11 @@ const createPost = async (title, matters) => {
 
 const start = async (titles, categories) => {
   const date = format(new Date(), "yyyy-MM-dd")
-  // log(chalk.bold.green(`Today is: ${date}`))
   const title = await promptTitle(titles)
   const category = await promptCategories(categories)
-  const publish = await promptPublished()
-  const matters = createMatters(omitBy({ title, date, category, publish }, isEmpty))
+  const publish = (await promptPublished()) ? true : false
+  const description = ""
+  const matters = createMatters({ title, date, category, description, publish })
   const proceed = await confirm(matters)
 
   if (proceed) {
@@ -139,6 +139,7 @@ const start = async (titles, categories) => {
     } catch (e) {
       spinner.fail(`${chalk.bgRed("Creating post failed with error:\n")} ${e}`)
     }
+    spinner.succeed(`Done 😊`)
   }
   return false
 }

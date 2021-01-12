@@ -32,6 +32,7 @@ const BlogList = ({ data, pageContext }) => {
 export const PostsQuery = graphql`
   query PostList($skip: Int!, $limit: Int!) {
     allMdx(
+      filter: { frontmatter: { publish: { eq: true } } }
       sort: { fields: frontmatter___date, order: DESC }
       skip: $skip
       limit: $limit

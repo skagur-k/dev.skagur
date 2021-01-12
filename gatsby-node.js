@@ -24,7 +24,7 @@ module.exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(`
     query {
       postsMdx: allMdx(
-        filter: { frontmatter: { published: { eq: true } } }
+        filter: { frontmatter: { publish: { eq: true } } }
         sort: { fields: [frontmatter___date], order: DESC }
       ) {
         edges {
