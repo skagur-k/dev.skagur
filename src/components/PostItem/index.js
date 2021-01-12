@@ -14,6 +14,7 @@ const PostWrapper = styled.li`
     text-decoration: none;
     &:hover {
       background: #e4e4e4;
+      transition: background-color 0.5s;
     }
   }
   & > a h2 {

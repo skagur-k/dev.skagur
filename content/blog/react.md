@@ -2,6 +2,7 @@
 title: "React"
 date: "2020-05-04"
 tags: ['test','react']
+category: "study log"
 published: true
 ---
 
