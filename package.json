@@ -2,7 +2,7 @@
   "name": "dev-skagur",
   "private": true,
   "description": "Personal website and blog by nh kim. dev.skagur",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
@@ -11,8 +11,10 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "gen": "node cli",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "post": "node cli"
+  },
+  "bin": {
+    "post": "cli/index.js"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
@@ -20,7 +22,6 @@
     "babel-plugin-styled-components": "^1.12.0",
     "chalk": "^4.1.0",
     "clear": "^0.1.0",
-    "figlet": "^1.5.0",
     "gatsby": "^2.30.1",
     "gatsby-plugin-mdx": "^1.8.0",
     "gatsby-plugin-react-helmet": "^3.8.0",
@@ -37,6 +38,7 @@
     "gray-matter": "^4.0.2",
     "inquirer": "^7.3.3",
     "inquirer-autocomplete-prompt": "^1.3.0",
+    "open": "^7.3.1",
     "ora": "^5.2.0",
     "polished": "^4.0.5",
     "prismjs": "^1.23.0",

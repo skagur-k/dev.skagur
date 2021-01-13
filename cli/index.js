@@ -7,18 +7,17 @@ const matter = require("gray-matter")
 const chalk = require("chalk")
 const ora = require("ora")
 const clear = require("clear")
-const figlet = require("figlet")
+const boxen = require("boxen")
 const format = require("date-fns/format")
 const { promisify } = require("util")
-const { kebabCase, omitBy, isEmpty } = require("lodash")
+const { kebabCase } = require("lodash")
+const open = require("open")
 
 const writeFile = promisify(fs.writeFile)
 const readdir = promisify(fs.readdir)
 const log = console.log
 
-const postPath = path.join(process.cwd(), "/content/blog")
-
-inquirer.registerPrompt("autocomplete", require("inquirer-autocomplete-prompt"))
+const postPath = path.join(`${__dirname}/../content/blog`)
 
 const readPosts = async () => {
   const posts = await readdir(postPath)
@@ -60,13 +59,28 @@ const promptCategories = async choices => {
       message: "Enter new Category",
       validate: async val => {
         if (!val) {
-          return res("You must provide Category name.")
+          return res(`⚠️  You must provide a category!`)
         }
         return true
       },
     })
   }
   return result.category || ""
+}
+
+const promptTags = async () => {
+  let result = await inquirer.prompt({
+    name: "tags",
+    message: "Input tags for the post (space as a delimiter)",
+    validate: async val => {
+      if (!val) {
+        return `⚠️  You must provide at least one tag!`
+      }
+      return true
+    },
+  })
+  results = result.tags.split(" ")
+  return results
 }
 
 const promptPublished = async () => {
@@ -82,13 +96,32 @@ const promptPublished = async () => {
   return result.publish
 }
 
+const boxenOptions = {
+  padding: 1,
+  margin: { left: 0, right: 0, top: 0, bottom: 0 },
+  borderStyle: "singleDouble",
+  borderColor: "white",
+  backgroundColor: "white",
+  align: "center",
+}
+
+const boxenOptionsPreview = {
+  padding: { left: 0, right: 10, top: 0, bottom: 0 },
+  margin: { left: 0, right: 0, top: 0, bottom: 0 },
+  borderStyle: "single",
+  borderColor: "white",
+  align: "left",
+}
+
 const confirm = async matters => {
+  clear()
   log(
-    chalk.magenta(`
-  Preview of the post's frontmatter
+    chalk.magenta.bold(`
+  Preview
   `)
   )
-  log(chalk.italic(matters))
+  previewMsg = boxen(chalk.italic(matters), boxenOptionsPreview)
+  log(previewMsg)
   const { proceed } = await inquirer.prompt({
     type: "confirm",
     name: "proceed",
@@ -121,40 +154,54 @@ const createPost = async (title, matters) => {
   return path
 }
 
-const start = async (titles, categories) => {
-  const date = format(new Date(), "yyyy-MM-dd")
+const openEditor = async filePath => {
+  const spinner = ora(`Opening file with VSCode`).start()
+  await open(filePath, { app: `visual studio code`, wait: false })
+  spinner.succeed(`Start writing :)`)
+  return true
+}
+
+const start = async (titles, categories, taglist) => {
+  const date = format(new Date(), "yyyy-MM-dd hh:mm")
+  log(`The time is: ${date}`)
+  log(`-----------------------------------------`)
   const title = await promptTitle(titles)
   const category = await promptCategories(categories)
+  const tags = await promptTags(taglist)
   const publish = (await promptPublished()) ? true : false
   const description = ""
-  const matters = createMatters({ title, date, category, description, publish })
+  const matters = createMatters({ title, date, category, description, tags, publish })
   const proceed = await confirm(matters)
 
   if (proceed) {
     try {
       const spinner = ora(`Creating post`).start()
       const createdPath = await createPost(title, matters)
-      spinner.succeed(`Created post at ${chalk.bold.green(createdPath)}`)
+      spinner.succeed(`Created post at: \n → ${chalk.bold.green(createdPath)}`)
+      openEditor(createdPath)
       return true
     } catch (e) {
       spinner.fail(`${chalk.bgRed("Creating post failed with error:\n")} ${e}`)
     }
-    spinner.succeed(`Done 😊`)
   }
   return false
 }
 
 const welcome = text => {
   clear()
-  console.log(chalk.underline.blue(text))
+  boxenMsg = boxen(chalk.black.bold(text), boxenOptions)
+  log(boxenMsg)
 }
 
 module.exports = (async () => {
-  welcome(`Generate blog posts`)
+  welcome(`Generate blog post`)
 
   const spinner = ora(`Fetching post list from -> ${postPath}`).start()
   const posts = await readPosts()
   spinner.succeed(`Fetched post list from -> ${postPath}`)
-  const [titles, categories] = processPosts(posts)
-  start(titles, categories)
+  spinner.start(`Processing markdown frontmatters`)
+  const [titles, categories, tags] = processPosts(posts)
+  spinner.succeed(`Successfully processed markdown frontmatters`)
+  log(`-----------------------------------------`)
+  start(titles, categories, tags)
 })()
