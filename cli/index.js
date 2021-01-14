@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const fs = require("fs")
+const fs = require("fs").promises
 const path = require("path")
 const inquirer = require("inquirer")
 const matter = require("gray-matter")
@@ -13,14 +13,14 @@ const { promisify } = require("util")
 const { kebabCase } = require("lodash")
 const open = require("open")
 
-const writeFile = promisify(fs.writeFile)
-const readdir = promisify(fs.readdir)
+// const writeFile = promisify(fs.writeFile)
+// const readdir = promisify(fs.readdir)
 const log = console.log
 
-const postPath = path.join(`${__dirname}/../content/blog`)
+const postPath = path.join(`${__dirname}/content/blog`)
 
 const readPosts = async () => {
-  const posts = await readdir(postPath)
+  const posts = await fs.readdir(postPath)
   return posts
 }
 
@@ -150,7 +150,7 @@ const createMatters = matters => {
 const createPost = async (title, matters) => {
   const kebabTitle = kebabCase(title)
   const path = `${postPath}/${kebabTitle}.md`
-  await writeFile(path, matters)
+  await fs.writeFile(path, matters)
   return path
 }
 
