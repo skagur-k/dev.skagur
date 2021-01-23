@@ -1,11 +1,7 @@
 import styled from "styled-components"
-import theme from "../../styles/theme"
-
-export const LayoutWrapper = styled.div``
 
 export const LayoutContainer = styled.div`
-  /* background: var(--body);
-  transition: background 0.1s linear; */
+  max-width: 900px;
   margin: 0 auto;
   padding: 0rem;
   display: flex;
@@ -14,10 +10,7 @@ export const LayoutContainer = styled.div`
 `
 
 export const LayoutContentWrapper = styled.div`
-  max-width: ${theme.media.large};
-  width: 100%;
   padding: 0 2rem 0;
-  margin: 0 auto;
-
+  margin: 0;
   flex-grow: 1;
 `

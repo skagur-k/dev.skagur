@@ -1,11 +1,18 @@
 import { darken, lighten } from "polished"
-// import { fonts } from "../utils/typography"
 
 const calcRem = size => `${size / 16}rem`
 
 const brand = {
-  primary: "#573EDE",
-  secondary: "#EEF4F2",
+  primary: "#1773B2",
+  secondary: "#CE2E22",
+  tertiary: "#DBE84E",
+}
+
+const menuColors = {
+  close: "#ED6B61",
+  minimize: "#FFBC30",
+  maximizeBg: "#00CB4D",
+  maximizePoint: "#03651A",
 }
 
 const colors = {
@@ -25,32 +32,7 @@ const colors = {
   purple_dark: "#231c42",
 }
 
-const fontSize = {
-  xs: calcRem(14),
-  sm: calcRem(16),
-  base: calcRem(18),
-  lg: calcRem(20),
-  xl: calcRem(22),
-  "2xl": calcRem(24),
-  "3xl": calcRem(26),
-  "4xl": calcRem(28),
-  "5xl": calcRem(30),
-  "6xl": calcRem(32),
-}
-
-const fontWeight = {
-  hairline: "100",
-  thin: "200",
-  light: "300",
-  normal: "400",
-  medium: "500",
-  semibold: "600",
-  bold: "700",
-  extrabold: "800",
-  black: "900",
-}
-
-export const media = {
+const media = {
   large: "1170px",
   medium: "768px",
   small: "480px",
@@ -62,13 +44,68 @@ export const media = {
   homePosts1Column: "600px",
 }
 
+const typography = {
+  // General
+  H1_Headline: `
+    font-size: ${calcRem(28)};
+    font-weight: semibold;
+  `,
+  H2_Headline: `
+    font-size: ${calcRem(24)};
+    font-weight: semibold;
+  `,
+  H3_Headline: `
+    font-size: ${calcRem(20)};
+    font-weight: semibold;
+  `,
+  H4_Headline: `
+    font-size: ${calcRem(18)};
+    font-weight: semibold;
+  `,
+
+  General_Body1: `
+    font-size: ${calcRem(16)};
+    font-weight: normal;
+  `,
+  General_Body2: `
+    font-size: ${calcRem(14)};
+    font-weight: normal;
+  `,
+  General_Body3: `
+    font-size: ${calcRem(12)};
+    font-weight: normal;
+  `,
+  General_Terminal: `
+    font-family: 'Fira Code', Georgia, Cambria, Cochin, Times, 'Times New Roman', serif;
+    font-size: ${calcRem(14)};
+    font-weight: normal;
+  `,
+
+  ResetButtonStyles: `
+    cursor: pointer;
+    border: none;
+    border-radius: 5;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    text-align: inherit;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    -webkit-appearance: none;
+  `,
+}
+
 const theme = {
-  // fonts,
-  fontSize,
-  fontWeight,
+  typography,
   media,
   brand,
   colors,
+  menuColors,
 }
 
 export default theme

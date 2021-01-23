@@ -1,17 +1,14 @@
 import React from "react"
 import Footer from "../Footer/"
-import Header from "../Header/"
+import Terminal from "../Terminal/"
 import * as Styled from "./styled"
 
 const Layout = props => {
   return (
-    <>
-      <Styled.LayoutContainer>
-        <Header />
-        <Styled.LayoutContentWrapper>{props.children}</Styled.LayoutContentWrapper>
-        <Footer />
-      </Styled.LayoutContainer>
-    </>
+    <Styled.LayoutContainer>
+      <Terminal />
+      <Styled.LayoutContentWrapper>{props.children}</Styled.LayoutContentWrapper>
+    </Styled.LayoutContainer>
   )
 }
 
