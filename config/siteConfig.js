@@ -1,15 +1,23 @@
 const menuLinks = [
   {
-    name: "Home",
+    name: "home",
     link: "/",
+    icon: "GoHome",
   },
   {
-    name: "Blog",
+    name: "blog",
     link: "/blog",
+    icon: "GoPencil",
   },
   {
-    name: "About",
+    name: "projects",
+    link: "/projects",
+    icon: "GoProject",
+  },
+  {
+    name: "about",
     link: "/about",
+    icon: "GoMegaphone",
   },
 ]
 
@@ -33,9 +41,9 @@ const social = [
 ]
 
 module.exports = {
-  title: "dev.log by nh kim",
-  titleShort: "dev.log",
-  titleTemplate: `%s | dev.log by nhkim`,
+  title: "dev-log by nh kim",
+  titleShort: "dev-log",
+  titleTemplate: `%s | dev-log by nhkim`,
   lang: "en",
   description: "Personal website and blog by namhyuck kim",
   pathPrefix: "/",

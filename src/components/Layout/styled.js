@@ -10,7 +10,7 @@ export const LayoutContainer = styled.div`
 `
 
 export const LayoutContentWrapper = styled.div`
-  padding: 0 2rem 0;
+  padding: 0 0 0;
   margin: 0;
   flex-grow: 1;
 `

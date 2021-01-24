@@ -16,15 +16,15 @@ const BlogList = ({ data, pageContext }) => {
   return (
     <Layout>
       <SEO title="Home" />
-      {/* <PostList posts={posts} /> */}
-      {/* <Pagination
+      <PostList posts={posts} />
+      <Pagination
         isFirst={isFirst}
         isLast={isLast}
         currentPage={currentPage}
         numPages={numPages}
         prevPage={prevPage}
         nextPage={nextPage}
-      /> */}
+      />
     </Layout>
   )
 }

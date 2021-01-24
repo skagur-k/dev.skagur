@@ -48,6 +48,7 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
+    "react-icons": "^4.1.0",
     "react-sizes": "^2.0.0",
     "react-typography": "^0.16.19",
     "styled-components": "^5.2.1",

@@ -2,7 +2,6 @@ import React from "react"
 import Layout from "../components/Layout"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { BaseContent } from "../styles/base"
 import SEO from "../components/SEO"
 
 export const query = graphql`
@@ -25,14 +24,12 @@ const BlogPost = props => {
   const { frontmatter, body } = post
   return (
     <Layout>
-      <BaseContent>
-        <SEO title={frontmatter.title} />
-        <h1>{frontmatter.title}</h1>
-        <p>{frontmatter.date}</p>
-        <div>
-          <MDXRenderer>{body}</MDXRenderer>
-        </div>
-      </BaseContent>
+      <SEO title={frontmatter.title} />
+      <h1>{frontmatter.title}</h1>
+      <p>{frontmatter.date}</p>
+      <div>
+        <MDXRenderer>{body}</MDXRenderer>
+      </div>
     </Layout>
   )
 }

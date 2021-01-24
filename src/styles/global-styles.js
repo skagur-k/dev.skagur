@@ -12,12 +12,8 @@ const GlobalStyles = createGlobalStyle`
     height: auto;
     max-width: 100%;
   }
-  *, *:before, *:after {
-    box-sizing: border-box;
-  }
 
   html {
-    box-sizing: border-box;
     font-size: 16px;
     color: '#1a202c';
   }
@@ -48,6 +44,15 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
+    //todo: temp & return ssr
+    --bg: #F1F1F1;
+    --text: #000000
+    --component: #F4F4F4;
+    --menuBg: #DCDCDC;
+    --terminalTabSelect: #CFCFCF;
+    --terminalTabUnselect: #E5E5E5;
+    --socialColor: #4F4F4F;
+
     background: var(--bg);
     color: var(--text);
     transition: background-color 0.1s linear, color 0.5s linear;

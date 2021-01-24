@@ -1,5 +1,5 @@
 import React from "react"
-import Footer from "../Footer/"
+// import Footer from "../Footer/"
 import Terminal from "../Terminal/"
 import * as Styled from "./styled"
 
